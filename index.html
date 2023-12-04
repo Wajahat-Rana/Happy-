@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Are You Happy Now?</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #db6fa0'
+    }
+    /* Cute Button Styles */
+.option {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  background-color: #ff7eb9; /* Pink */
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s, transform 0.2s;
+  outline: none;
+}
+
+.option:hover {
+  background-color: #ff4d87; /* Lighter Pink on Hover */
+}
+
+.option:active {
+  transform: scale(0.95); /* Slightly reduce size on click */
+}
+
+
+    #container {
+      width: 80vw;
+      height: 80vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #gif-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #question {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    #options {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* .option {
+      margin: 0 10px;
+      cursor: pointer;
+      font-size: 16px;
+    } */
+  </style>
+</head>
+<body>
+  <div id="container" onmouseover="randomizeNoContainer()">
+    <div id="gif-container">
+      <img src="./7PUp.gif" alt="Happy GIF" id="happy-gif">
+      <div id="question">Are You Happy Now?</div>
+      <div id="options">
+        <div class="option" onclick="celebrate()">Yes</div>
+        <div class="option" id="no-option">No</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function randomizeNoContainer() {
+      const container = document.getElementById('container');
+      const noOption = document.getElementById('no-option');
+      const maxX = container.clientWidth - noOption.clientWidth;
+      const maxY = container.clientHeight - noOption.clientHeight;
+
+      const randomX = Math.max(0, Math.floor(Math.random() * maxX));
+      const randomY = Math.max(0, Math.floor(Math.random() * maxY));
+      const randomValuex = Math.floor(Math.random() * 20) * 20 + 15;
+      const randomValuey = Math.floor(Math.random() * 10) * 20 + 15;
+
+      noOption.style.position = 'absolute';
+      noOption.style.left = `${randomValuex}px`;
+      noOption.style.top = `${randomValuey}px`;
+    }
+
+    function celebrate() {
+     changeGif();
+
+    }
+
+    function changeGif() {
+      const gifElement = document.getElementById('happy-gif');
+      const newGifUrl = "4j.gif"; // Replace with the URL of your new GIF
+      gifElement.src = newGifUrl;
+    
+      const options = document.getElementById('options');
+      const question = document.getElementById('question');
+question.style.visibility = "hidden"
+
+      options.style.visibility = 'hidden'
+    
+    }
+  </script>
+</body>
+</html>
